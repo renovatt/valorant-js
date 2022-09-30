@@ -1,0 +1,55 @@
+export const a_home = document.querySelector('.a-home')
+export const a_agents = document.querySelector('.a-agents')
+export const a_weapons = document.querySelector('.a-weapons')
+export const a_gears = document.querySelector('.a-gears')
+export const a_maps = document.querySelector('.a-maps')
+
+export const m_home = document.querySelector('.m-home')
+export const m_agents = document.querySelector('.m-agents')
+export const m_weapons = document.querySelector('.m-weapons')
+export const m_gears = document.querySelector('.m-gears')
+export const m_maps = document.querySelector('.m-maps')
+
+export const open_menu = document.querySelector('.open-menu')
+export const close_menu = document.querySelector('.close-menu')
+
+export const header = document.querySelector('.header')
+export const home = document.querySelector('.home')
+export const agents = document.querySelector('.agents')
+export const weapons = document.querySelector('.weapons')
+export const gears = document.querySelector('.gears')
+export const maps = document.querySelector('.maps')
+export const footer = document.querySelector('.footer')
+
+export const character = document.querySelector('.character')
+export const content_modal = document.querySelector('.content-modal')
+export const back = document.querySelector('.back')
+export const guns = document.querySelector('.guns')
+export const gear = document.querySelector('.gear')
+export const map = document.querySelector('.map')
+
+export const role_name = document.querySelector('.role-name')
+export const role_icon = document.querySelector('.role-icon')
+export const char_name = document.querySelector('.char-name')
+export const char_desc = document.querySelector('.char-desc')
+
+export const abilities_slot_0 = document.querySelector('.abilities-slot-0')
+export const abilities_slot_0_displayName = document.querySelector('.abilities-slot-0-displayName')
+export const abilities_slot_0_description = document.querySelector('.abilities-slot-0-description')
+
+export const abilities_slot_1 = document.querySelector('.abilities-slot-1')
+export const abilities_slot_1_displayName = document.querySelector('.abilities-slot-1-displayName')
+export const abilities_slot_1_description = document.querySelector('.abilities-slot-1-description')
+
+export const abilities_slot_2 = document.querySelector('.abilities-slot-2')
+export const abilities_slot_2_displayName = document.querySelector('.abilities-slot-2-displayName')
+export const abilities_slot_2_description = document.querySelector('.abilities-slot-2-description')
+
+export const abilities_slot_3 = document.querySelector('.abilities-slot-3')
+export const abilities_slot_3_displayName = document.querySelector('.abilities-slot-3-displayName')
+export const abilities_slot_3_description = document.querySelector('.abilities-slot-3-description')
+
+export const fullPortrait = document.querySelector('.fullPortrait')
+export const sound = document.querySelector('.sound')
+export const sound_2 = document.querySelector('.sound-2')
+export const voice = new Audio()
