@@ -2,7 +2,7 @@
 
 ## Sobre o projeto
 
-(https://valorant-self.vercel.app/)
+https://valorant-self.vercel.app/
 
 Será que alguém aqui seria fã do jogo? Assumo que infelizmente não joguei muitas vezes por conta de não ter um PC bom, mas resolvi tentar criar mais um mini site, consumindo uma API estou renderizando algumas informações sobre o game, personagens com suas descrições, vozes e habilidades, apresentações de todas as armas, suas especificações e os mapas presentes no jogo.
 
