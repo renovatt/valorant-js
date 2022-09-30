@@ -26,7 +26,7 @@ Será que alguém aqui seria fã do jogo? Assumo que infelizmente não joguei mu
 ## Como usar
 - Apenas navegue entre as janelas do site e clique nos personagens para visualizar suas informações.
 
-![Web 3](https://github.com/renovatt/valorant/blob/main/src/assets/readme/valorant-preview.mp4)
+![Web 3](https://github.com/renovatt/valorant/blob/main/src/assets/readme/valorant-preview.gif)
 
 ## Como contribuir?
 - Você pode me dar suporte me seguindo aqui no GitHub ou criar uma conexão comigo no linkedin, crescendo minha Networking e curtir o meu projeto.
