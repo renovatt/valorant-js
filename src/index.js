@@ -1,193 +1,177 @@
-import { fetchAgents, fetchWeapons, fetchGear, fetchMaps } from './modules/fetchs.js'
+import { gearRender } from './modules/gear.js'
+import { mapsRender } from './modules/maps.js'
+import { iconCharRender } from './modules/agents.js'
+import { iconGunsRender } from './modules/weapons.js'
+import { fetchAgents, fetchSkills } from './modules/fetchs.js'
+
+import { open_menu, close_menu } from './modules/consts.js'
 import { a_home, a_agents, a_weapons, a_gears, a_maps } from './modules/consts.js'
 import { m_home, m_agents, m_weapons, m_gears, m_maps } from './modules/consts.js'
-import { open_menu, close_menu } from './modules/consts.js'
 import { header, home, agents, weapons, gears, maps, footer } from './modules/consts.js'
-import { character, content_modal, back, guns, gear, map } from './modules/consts.js'
-import { role_name, role_icon, char_name, char_desc } from './modules/consts.js'
-import { abilities_slot_0, abilities_slot_0_displayName, abilities_slot_0_description } from './modules/consts.js'
-import { abilities_slot_1, abilities_slot_1_displayName, abilities_slot_1_description } from './modules/consts.js'
-import { abilities_slot_2, abilities_slot_2_displayName, abilities_slot_2_description } from './modules/consts.js'
-import { abilities_slot_3, abilities_slot_3_displayName, abilities_slot_3_description } from './modules/consts.js'
-import { fullPortrait, sound, sound_2, voice } from './modules/consts.js'
+
+import { fullPortrait, sound, voice } from './modules/consts.js'
+import { character, content_modal, back } from './modules/consts.js'
+import { role_name, role_icon, char_name, char_desc, list_skills_img, skill_description } from './modules/consts.js'
 
 let char_uuid
-
-const iconCharRender = async () => {
-    const fetch = await fetchAgents()
-    const response = fetch.data
-    const charList = response.map(item =>
-        `<div class="card">
-            <span class="card-name">${item.displayName}</span>
-            <img id="${item.uuid}" src="${item.displayIcon}" alt="${item.displayName}">
-        </div>`)
-    character.innerHTML = charList.join('')
-}
+let checking_both_names
+let saved_skill_name
 
 iconCharRender()
+iconGunsRender()
+gearRender()
+mapsRender()
 
-//função que cria e abre o modal
 const openModal = async () => {
-    const data = await fetchAgents()
-    const response = data.data
-    const search = response.find(item => item.uuid === char_uuid)
-    if (search) {
+    const data_agents = await fetchAgents()
+    const data_skills = await fetchSkills()
+    const response_agents = data_agents.data
+    const response_skills = data_skills.result.data.allContentstackAgentList.nodes[0].agent_list
+    const valorant_api_1 = response_agents.find(item => item.uuid === char_uuid)
+    const valorant_api_2 = response_skills.find(item => item.title === checking_both_names)
 
-        role_name.innerHTML = `${search.role.displayName}`
-        role_icon.src = `${search.role.displayIcon}`
+    if (valorant_api_1) {
 
-        char_name.innerHTML = `${search.displayName}`
-        char_desc.innerHTML = `${search.description}`
+        role_name.innerHTML = `${valorant_api_1.role.displayName}`
+        role_icon.src = `${valorant_api_1.role.displayIcon}`
+        char_name.innerHTML = `${valorant_api_1.displayName}`
+        char_desc.innerHTML = `${valorant_api_1.description}`
+        fullPortrait.src = `${valorant_api_1.fullPortrait}`
+        voice.src = `${valorant_api_1.voiceLine.mediaList[0].wave}`
 
-        abilities_slot_0.src = `${search.abilities[0].displayIcon}`
-        abilities_slot_0_displayName.innerHTML = `${search.abilities[0].displayName}`
-        abilities_slot_0_description.innerHTML = `${search.abilities[0].description}`
+        controlModalScreen()
+    }
 
-        abilities_slot_1.src = `${search.abilities[1].displayIcon}`
-        abilities_slot_1_displayName.innerHTML = `${search.abilities[1].displayName}`
-        abilities_slot_1_description.innerHTML = `${search.abilities[1].description}`
+    if(valorant_api_2){
 
-        abilities_slot_2.src = `${search.abilities[2].displayIcon}`
-        abilities_slot_2_displayName.innerHTML = `${search.abilities[2].displayName}`
-        abilities_slot_2_description.innerHTML = `${search.abilities[2].description}`
+        const list_data_skills = [{
+            skill_0: `${valorant_api_2.abilities[0].ability_icon.url}`,
+            skill_1: `${valorant_api_2.abilities[1].ability_icon.url}`,
+            skill_2: `${valorant_api_2.abilities[2].ability_icon.url}`,
+            skill_3: `${valorant_api_2.abilities[3].ability_icon.url}`,
 
-        abilities_slot_3.src = `${search.abilities[3].displayIcon}`
-        abilities_slot_3_displayName.innerHTML = `${search.abilities[3].displayName}`
-        abilities_slot_3_description.innerHTML = `${search.abilities[3].description}`
+            name_skill_0: `${valorant_api_2.abilities[0].ability_name}`,
+            name_skill_1: `${valorant_api_2.abilities[1].ability_name}`,
+            name_skill_2: `${valorant_api_2.abilities[2].ability_name}`,
+            name_skill_3: `${valorant_api_2.abilities[3].ability_name}`,
+            
+            description_skill_0: `${valorant_api_2.abilities[0].ability_description}`,
+            description_skill_1: `${valorant_api_2.abilities[1].ability_description}`,
+            description_skill_2: `${valorant_api_2.abilities[2].ability_description}`,
+            description_skill_3: `${valorant_api_2.abilities[3].ability_description}`,
 
-        fullPortrait.src = `${search.fullPortrait}`
-        voice.src = `${search.voiceLine.mediaList[0].wave}`
+            video_skill_0: `${valorant_api_2.abilities[0].ability_video[0].video.file.url}`,   
+            video_skill_1: `${valorant_api_2.abilities[1].ability_video[0].video.file.url}`,       
+            video_skill_2: `${valorant_api_2.abilities[2].ability_video[0].video.file.url}`,
+            video_skill_3: `${valorant_api_2.abilities[3].ability_video[0].video.file.url}`
+        }]
 
-        header.style.display = "none"
-        home.style.display = "none"
-        agents.style.display = "none"
-        weapons.style.display = "none"
-        gears.style.display = "none"
-        maps.style.display = "none"
-        character.style.display = "none"
-        footer.style.display = "none"
-        content_modal.style.display = "flex"
+        const render_skills = list_data_skills.map( skill => 
+           `<div><img src= "${skill.skill_0}" data-skill="${skill.name_skill_0}"></div>
+            <div><img src= "${skill.skill_1}" data-skill="${skill.name_skill_1}"></div>
+            <div><img src= "${skill.skill_2}" data-skill="${skill.name_skill_2}"></div>
+            <div><img src= "${skill.skill_3}" data-skill="${skill.name_skill_3}"></div>
+            `)
+
+            list_skills_img.innerHTML = render_skills
+
+            const zero_skill = list_data_skills.map(item => `
+                        <div class="skills-desc">
+                            <h4>${item.name_skill_0}</h4>
+                            <p class="control">${item.description_skill_0}</p>
+                        </div>
+
+                        <div class="skills-video">
+                            <video autoplay loop muted src="${item.video_skill_0}"></video>
+                        </div>`)
+                    skill_description.innerHTML = zero_skill
+
+                list_skills_img.addEventListener('click', (event) => {
+                    saved_skill_name = event.target.dataset.skill
+                    renderInfoSkills()
+                })
+
+            function renderInfoSkills(){
+                const check_zero_skill = list_data_skills.find(item => item.name_skill_0 === saved_skill_name)
+                const check_first_skill = list_data_skills.find(item => item.name_skill_1 === saved_skill_name)
+                const check_second_skill = list_data_skills.find(item => item.name_skill_2 === saved_skill_name)
+                const check_third_skill = list_data_skills.find(item => item.name_skill_3 === saved_skill_name)
+
+                if(check_zero_skill){
+                    const zero_skill = list_data_skills.map(item => `
+                        <div class="skills-desc">
+                            <h4>${item.name_skill_0}</h4>
+                            <p class="control">${item.description_skill_0}</p>
+                        </div>
+
+                        <div class="skills-video">
+                            <video autoplay loop muted src="${item.video_skill_0}"></video>
+                        </div>`)
+                    
+                    skill_description.innerHTML = zero_skill
+                } 
+                
+                if(check_first_skill){
+                    const first_skill = list_data_skills.map(item => `
+                    <div class="skills-desc">
+                        <h4>${item.name_skill_1}</h4>
+                        <p class="control">${item.description_skill_1}</p>
+                    </div>
+                    
+                    <div class="skills-video">
+
+                        <video autoplay loop muted src="${item.video_skill_1}"></video>
+                    </div>`)
+                    skill_description.innerHTML = first_skill
+                } 
+                
+                if(check_second_skill){
+                    const second_skill = list_data_skills.map(item => `
+                    <div class="skills-desc">
+                        <h4>${item.name_skill_2}</h4>
+                        <p class="control">${item.description_skill_2}</p>
+                    </div>
+                    
+                    <div class="skills-video">
+                        <video autoplay loop muted src="${item.video_skill_2}"></video>
+                    </div>`)
+                    skill_description.innerHTML = second_skill
+                }
+                
+                if(check_third_skill){
+                    const third_skill = list_data_skills.map(item => `
+                    <div class="skills-desc">
+                        <h4>${item.name_skill_3}</h4>
+                        <p class="control">${item.description_skill_3}</p>
+                    </div>
+                    
+                    <div class="skills-video">
+                        <video autoplay loop muted src="${item.video_skill_3}"></video>
+                    </div>`)
+                    skill_description.innerHTML = third_skill
+                }
+            }
     }
 }
 
-const iconGunsRender = async () => {
-    const fetch = await fetchWeapons()
-    const response = fetch.data
-    const gunsList = response.map(item => 
-            
-            `<div class="card-guns">
-            <span class="name">${item.displayName}</span>
-            <img id="${item.uuid}" src="${item.displayIcon}" alt="${item.displayName}">
-           
-            <section class="guns-context">
-                    ${item.shopData?.categoryText ? (
-                `<div class="info">Categoria:<span>${item.shopData?.categoryText}</span></div>`
-                    ) : '<div class="info"></div>'}
-                    
-                    ${item.weaponStats?.fireRate ? (
-                `<div class="info">Taxa de Incêndio:<span>${item.weaponStats?.fireRate}</span></div>`
-                    ) : '<div class="info"></div>'}
-                    
-                    ${item.weaponStats?.magazineSize ? (
-                `<div class="info">Tempo da Revista:<span>${item.weaponStats?.magazineSize}</span></div>`
-                    ) : '<div class="info"></div>'}
-                    
-                    ${item.weaponStats?.reloadTimeSeconds ? (
-                `<div class="info">Tempo de Recarga:<span>${item.weaponStats?.reloadTimeSeconds}</span></div>`
-                    ) : '<div class="info"></div>'}
-                    
-                    ${item.shopData?.cost ? (
-                `<div class="info">Custo:<span>${item.shopData?.cost}</span></div>`
-                    ) : '<div class="info"></div>'}
-            </section>
-
-            <section class="guns-info-dmg">
-
-                ${item.weaponStats?.damageRanges[0]?.rangeStartMeters || item.weaponStats?.damageRanges[0]?.rangeEndMeters ?`
-                <section class="guns-dmg">
-                        <div class="info"><span>${item.weaponStats?.damageRanges[0]?.rangeStartMeters} -
-                            ${item.weaponStats?.damageRanges[0]?.rangeEndMeters}m</span>
-                        </div>` : '<div class="info"></div>'
-                        }
-
-                    <section class="guns-desc">
-                        ${item.weaponStats?.damageRanges[0]?.headDamage.toFixed(2) ? 
-                        `<div class="info">Cabeça:<span>${item.weaponStats?.damageRanges[0]?.headDamage.toFixed(2)}
-                        </span></div>` : '<div class="info"></div>' }
-
-                        ${item.weaponStats?.damageRanges[0]?.bodyDamage.toFixed(2) ?
-                        `<div class="info">Corpo:<span>${item.weaponStats?.damageRanges[0]?.bodyDamage.toFixed(2)}
-                        </span></div>` : '<div class="info"></div>' }
-
-                        ${item.weaponStats?.damageRanges[0]?.legDamage.toFixed(2) ?
-                        `<div class="info">Perna:<span>${item.weaponStats?.damageRanges[0]?.legDamage.toFixed(2)}
-                        </span></div>` : '<div class="info"></div>' }
-                    </section>
-                </section>
-
-                ${item.weaponStats?.damageRanges[1]?.rangeStartMeters || item.weaponStats?.damageRanges[1]?.rangeEndMeters ? `
-                <section class="guns-dmg">
-                        <div class="info"><span>${item.weaponStats?.damageRanges[1]?.rangeStartMeters} -
-                            ${item.weaponStats?.damageRanges[1]?.rangeEndMeters}m</span>
-                        </div>` : '<div class="info"></div>'
-                        }
-
-                    <section class="guns-desc">
-                        ${item.weaponStats?.damageRanges[1]?.headDamage.toFixed(2) ?
-                         `<div class="info">Cabeça:<span>${item.weaponStats?.damageRanges[1]?.headDamage.toFixed(2)}
-                        </span></div>` : '<div class="info"></div>'}
-
-                        ${item.weaponStats?.damageRanges[1]?.bodyDamage.toFixed(2) ?
-                        `<div class="info">Corpo:<span>${item.weaponStats?.damageRanges[1]?.bodyDamage.toFixed(2)}
-                        </span></div>` : '<div class="info"></div>'}
-
-                        ${item.weaponStats?.damageRanges[1]?.legDamage.toFixed(2) ?
-                        `<div class="info">Perna:<span>${item.weaponStats?.damageRanges[1]?.legDamage.toFixed(2)}
-                        </span></div>` : '<div class="info"></div>' }
-                    </section>
-                </section>
-            </section>
-        </div>
-        `)
-    guns.innerHTML = gunsList.join('')
+function controlModalScreen(){
+    header.style.display = "none"
+    home.style.display = "none"
+    agents.style.display = "none"
+    weapons.style.display = "none"
+    gears.style.display = "none"
+    maps.style.display = "none"
+    character.style.display = "none"
+    footer.style.display = "none"
+    content_modal.style.display = "flex"
 }
-
-iconGunsRender()
-
-const gearRender = async () => {
-    const fetch = await fetchGear()
-    const response = fetch.data
-    const gearList = response.map(item =>
-        `<div class="gear-content">
-            <div class="gear-desc">
-                <div>Nome:<span>${item.displayName}</span></div>
-                <div>Descrição:<span>${item.description}</span></div>
-                <div>Categoria:<span>${item.shopData.categoryText}</span></div>
-                <div>Custo:<span>${item.shopData.cost}</span></div>
-            </div>
-            <img src="${item.displayIcon}" alt="${item.displayName}">
-        </div>`)
-    gear.innerHTML = gearList.join('')
-}
-
-gearRender()
-
-const mapsRender = async () => {
-    const fetch = await fetchMaps()
-    const response = fetch.data
-    const mapList = response.map(item =>
-        `<div class="card-maps">
-                <img id="${item.uuid}" src="${item.splash}" alt="${item.displayName}">
-                <span class="card-map-name">${item.displayName}</span>
-        </div>`)
-    map.innerHTML = mapList.join('')
-}
-
-mapsRender()
 
 //Eventos de controle e modal
 character.addEventListener('click', (event) => {
     char_uuid = event.target.id
+    checking_both_names = event.target.dataset.name
+    // console.log(char_uuid)
+    // console.log(checking_both_names)
     openModal()
 })
 
@@ -204,10 +188,6 @@ back.addEventListener('click', () => {
 })
 
 sound.addEventListener('click', () => {
-    voice.play()
-})
-
-sound_2.addEventListener('click', () => {
     voice.play()
 })
 

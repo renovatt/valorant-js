@@ -4,11 +4,18 @@
     font-weight: normal;
 }
 
+@font-face{
+    font-family: 'DINNextW1G';
+    src: url('../assets/font/DINNextW1G-Bold.otf') format('opentype');
+    font-weight: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
     font-family: 'Tungsten';
     box-sizing: border-box;
+    letter-spacing: 1px;
 }
 
 :root {
@@ -76,7 +83,7 @@ header nav a{
     text-transform: uppercase;
     padding: 10px;
     height: 50px;
-    width: 80px;
+    width: 90px;
     color: var(--color4);
     font-size: 28px;
 }
@@ -125,6 +132,63 @@ header nav a:hover{
     width: 100%;
     height: 100vh;
     background-color: var(--color1);
+}
+
+.character {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    width: 95%;
+    height: auto;
+    background-color: var(--color2);
+    border: 1px solid #000;
+}
+
+.card-char {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 5px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background-color: #FD4556;
+    border: 1px solid #000;
+}
+
+.card-char-name{
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--color1);
+    background-color: var(--color5);
+}
+
+.card-char img {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: all .3s;
+    background-color: var(--color4);
+}
+
+.card-char img:hover {
+    transform: scale(101%);
+    background-color: var(--color5);
+    opacity: 0.1;
 }
 
 .weapons{
@@ -369,66 +433,14 @@ header nav a:hover{
     opacity: 1;
 }
 
-.character {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    margin-top: 30px;
-    width: 95%;
-    height: auto;
-    background-color: var(--color2);
-    border: 1px solid #000;
-}
-
-.card {
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    margin: 5px;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border: 1px solid #000;
-}
-
-.card .card-name{
-    position: absolute;
-    width: 120px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 32px;
-    font-weight: 600;
-    color: var(--color1);
-    background-color: var(--color5);
-}
-
-.card img {
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all .3s;
-    background-color: var(--color4);
-}
-
-.card img:hover {
-    transform: scale(101%);
-    background-color: var(--color5);
-    opacity: 0.1;
-}
+/* Agent Modal Settings */
 
 .content-modal {
     display: none;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 100%;
-    height: 100vh;
     background-color: var(--color2);
 }
 
@@ -438,148 +450,109 @@ header nav a:hover{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 95%;
-    height: 95vh;
-    border: 1px solid #000;
-    background-color: var(--color4);
-}
-
-.agent-model-content{
-    display: flex;
-    flex-direction: column;
     width: 100%;
 }
 
-.header-modal{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 3rem;
-    text-transform: uppercase;
-    width: 250px;
-    height: 70px;
-    margin: 20px;
+.agent-background{
+    overflow: hidden;
+    position: fixed;
+    z-index: -9;
+    width: 100%;
+    height: 100vh;
 }
 
-.header-modal div img{
+.agent-modal-content{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+}
+
+.char-modal{
+    position: absolute;
+    right: 0px;
+    top: -50px;
+    /* top: calc(50% -220px); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.char-modal img{
+    /* min-width: 580px;
+    min-height: 580px; */
+    /* width: 100%; */
+    height: 999px;
+    filter: drop-shadow(0 0 0.75rem #4b3d40);
+}
+
+.char-info{
+    width: 350px;
+    height: 500px;
+    margin-top: 80px;
+    margin-left: 30px;
+}
+
+.header-char-modal{
     display: flex;
     align-items: center;
-    width: 60px;
-    height: 60px;
-    background-color: var(--color1);
+    font-size: 2rem;
+    text-transform: uppercase;
+    width: 220px;
+    height: 70px;
+    margin: 20px;
+    color: #ece8e1;
+}
+
+.header-char-modal div img{
+    display: flex;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    margin-top: -30px;
+    border-radius: 50%;
 }
 
 .main-modal{
     width: 100%;
-    max-width: 80ch;
-    height: auto;
-    margin: 0 20px;
-}
-
-.main-modal h3{
-    font-size: 2rem;
-    text-transform: uppercase;
-}
-
-.main-modal p{
-    font-size: 1rem;
-    font-weight: 600;
-    color: #6e5151;
-}
-
-.skills-modal{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.skills-modal img{
-    width: 60px;
-    height: 60px;
-    background-color: var(--color1);
-}
-
-.skills-modal .skills-card{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 20px;
-}
-
-.skills-modal .skills-card .skills-content{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 0 20px;
-}
-
-.skills-modal .skills-card .skills-content .skills-desc {
-    display: flex;
-    flex-direction: column;
     padding: 10px;
 }
 
-.skills-modal .skills-card .skills-content .skills-desc h4{
-    font-size: 22px;
-    padding: 3px;
+.main-modal .title{
+    display: flex;
+    align-items: center;
 }
 
-.skills-modal .skills-card .skills-content .skills-desc p {
-    font-size: 14px;
-    font-weight: 600;
-    color: #6e5151;
-}
-
-p::selection {
-    color: var(--color5);
-    background-color: var(--color4);
-}
-
-.char-modal{
-    z-index: -1;
-    position: absolute;
-    right: 0;
-    top: calc(50% -220px);
+.sound {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-}
-
-.char-modal img{
-    min-width: 480px;
-    min-height: 480px;
-    width: 100%;
-    height: 525px;
-    filter: drop-shadow(0 0 0.75rem #4b3d40);
-}
-
-.char-modal .sound{
     cursor: pointer;
-    font-weight: 600;
-    font-size: 18px;
-    margin-top: 20px;
-    width: 100px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 20px;
     background-color: #FD4556;
     border: 1px solid #000;
+    transition: ease-in-out .1s;
 }
 
-.sound-2{
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 45px;
-    right: 45px;
+.sound:hover{
     cursor: pointer;
-    font-weight: 600;
-    font-size: 18px;
-    margin-top: 20px;
-    width: 100px;
-    height: 35px;
-    background-color: #FD4556;
-    border: 1px solid #000;
+    border: 1px solid #fff;
+}
+
+.main-modal h3{
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: #ece8e1;
+}
+
+.main-modal p{
+    font-family: 'DINNextW1G';
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: #c4c3be;
 }
 
 .sound-2:hover{
@@ -590,7 +563,7 @@ p::selection {
     color: #FFFBF5;
 }
 
-.ghost{
+/* .ghost{
     z-index: -2;
     height: 100%;
     width: 50vw;
@@ -599,6 +572,112 @@ p::selection {
 .control{
     min-width: 300px;
     max-width: 600px;
+} */
+
+.skills-modal{
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin-top: 350px;
+    background-color: #c4c3be;
+}
+
+.skills-card{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.skills-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.list-skills-img{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin: 20px;
+}
+
+.list-skills-img div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    border: 1px solid #000;
+}
+
+.list-skills-img img{
+    cursor: pointer;
+    margin:  0 50px;
+    width: 60px;
+    height: 60px;
+    filter: drop-shadow(0 0 0.2rem #fdf);
+    transition: ease-in-out .1s;
+}
+
+.list-skills-img img:hover{
+    filter: none;
+    background-color: #FD4556;
+}
+
+.skills-img{
+    filter: none;
+    background-color: #FD4556;
+}
+
+.skills-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    margin: 20px;
+}
+
+.skill-description{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+}
+
+.skills-desc {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.skills-desc h4{
+    font-size: 2rem;
+}
+
+.skills-desc p {
+    font-family: 'DINNextW1G';
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: #4b3d40;
+}
+
+.skills-video{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    min-height: 415px;
+    background-color: #000;  
+}
+
+.skills-video video {
+    width: 100%;
 }
 
 .back {
@@ -618,11 +697,14 @@ p::selection {
     color: #FFFBF5;
 }
 
+/* Agent Modal Settings End */
+
 .footer{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    min-width: 333px;
     position: fixed;
     bottom: 0;
     z-index: 1;
@@ -651,35 +733,42 @@ p::selection {
     color: var(--color1);
 }
 
+p::selection {
+    color: var(--color5);
+    background-color: var(--color4);
+}
+
 /*Media query*/
 @media screen and (max-width: 1115px){
+    .content-modal{
+        overflow: hidden;
+    }
+
     .home-content video{
         margin-top: 10px;
         width: 200%;
         height: 100vh;
     }
 
-    .card{
+    .card-char{
         width: 120px;
-        height: auto;
+        height: 120px;
     }
 
-    .card .card-name{
+    .card-char-name{
         width: 100px;
     }
 
     .char-modal{
-        opacity: 0.7;
+        right: -120px;
     }
 
-    .main-modal p {
-        font-size: 14px;
+    .skills-video{
+        width: 600px;
     }
 
-    .sound{
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .gear-content img{
+        width: 210px;
     }
 }
 
@@ -756,12 +845,9 @@ p::selection {
         height: auto;
     }
 
-    .sound{
-        display: none;
-    }
-
-    .sound-2{
-        display: flex;
+    .char-modal{
+        right: -160px;
+        opacity: 0.4;
     }
 
     nav{
@@ -779,6 +865,69 @@ p::selection {
     .card-maps img{
         width: 200%;
     }
+
+    .skill-description{
+        flex-direction: column;
+        height: auto;
+    }
+
+    .skills-desc{
+        margin: 30px;
+        width: 70%;
+    }
+
+    .skills-video{
+        margin-bottom: 30px;
+        background: none;
+        min-height: auto;
+    }
+
+    .skills-video video{ 
+        border-bottom: 20px solid #FD4556;
+    }
+}
+
+@media screen and (max-width: 720px) {    
+    .agent-background{
+        width: 100vh;
+    }
+
+    .agent-modal-content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .char-modal{
+        position: relative;
+        margin-left: -330px;
+        margin-top: 730px;
+        opacity: 1;
+    }
+
+    .char-modal img{
+        height: 500px;
+    }
+
+    .char-info{
+        margin-top: 0;
+        margin-bottom: 350px;
+    }
+
+    .card-char{
+        width: 100px;
+        height: 100px;
+    }
+
+    .card-char-name{
+        width: 80px;
+        font-size: 1.4rem;
+    }
+
+    .skills-video{
+        width: 90%;
+    }
 }
 
 @media screen and (max-width: 580px) {
@@ -791,16 +940,18 @@ p::selection {
         width: 300%;
     }
 
-    .card{
+    .character{
+        margin-top: 40px;
+    }
+
+    .card-char{
         width: 100px;
+        height: 100px;
     }
 
-    .card .card-name{
-        width: 80px;
-    }
-
-    .char-modal{
-        opacity: 0.3;
+    .card-char-name{
+        width: 60px;
+        font-size: 1.2rem;
     }
 
     .guns-dmg{
@@ -814,16 +965,16 @@ p::selection {
 
     .gear-content{
         justify-content: center;
-        width: 100%;
+        width: 80%;
         height: 250px;
        }
     
     .gear-desc div{
-        font-size: 20px;
+        font-size: 1.2rem;
     }
 
     .gear-content img{
-        width: 40%;
+        width: 30%;
     }
 
     .gear-thumb{
@@ -835,42 +986,33 @@ p::selection {
     }
 }
 
+@media screen and (max-width: 468px){
+    .card-char{
+        width: 22%;
+        height: 22%;
+    }
+
+    .card-char-name{
+        width: 15%;
+    }
+}
+
 @media screen and (max-width: 375px){
-    .agent-model-content{
-        margin: 30px;
-        height: auto;
-    }
-    
-    .header-modal{
-        width: 180px;
-    }
-    
-    .header-modal div img{
-        width: 40px;
-        height: 40px;
-    }
-    
     .main-modal{
-        width: 80%;
+        width: 90%;
     }
-    
-    .sound-2{
-        top: 100px;
-        right: 70px;
+
+    .main-modal p{
+        font-size: 1.2rem;
+    }
+
+    .skill-description p{
+        font-size: 1.2rem;
     }
 
     .back{
-        top: 80px;
-        right: 70px;
-    }
-    
-    .card{
-        width: 78px;
-    }
-
-    .card .card-name{
-        width: 65px;
-        overflow: hidden;
+        top: 20px;
+        right: 60px;
     }
 
     .gear{
@@ -878,7 +1020,7 @@ p::selection {
     }
 
     .gear-content{
-        width: 80%;
+        width: 70%;
        }
 
     .gear-thumb{

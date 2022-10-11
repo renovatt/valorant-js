@@ -4,7 +4,6 @@ export const fetchAgents = async () => {
         const response = await fetchA.json()
         return response
     }
-    
 }
 
 fetchAgents()
@@ -39,3 +38,13 @@ export const fetchMaps = async () => {
 }
 
 fetchMaps()
+
+export const fetchSkills = async () => {
+    const fetchA = await fetch(`https://api-proxy.hayato.dev.br/link?url=https://playvalorant.com/page-data/pt-br/agents/neon/page-data.json`)
+    if (fetchA.status === 200) {
+        const response = await fetchA.json()
+        return response
+    }   
+}
+
+fetchSkills()

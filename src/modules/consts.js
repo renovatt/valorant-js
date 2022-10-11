@@ -32,24 +32,9 @@ export const role_name = document.querySelector('.role-name')
 export const role_icon = document.querySelector('.role-icon')
 export const char_name = document.querySelector('.char-name')
 export const char_desc = document.querySelector('.char-desc')
-
-export const abilities_slot_0 = document.querySelector('.abilities-slot-0')
-export const abilities_slot_0_displayName = document.querySelector('.abilities-slot-0-displayName')
-export const abilities_slot_0_description = document.querySelector('.abilities-slot-0-description')
-
-export const abilities_slot_1 = document.querySelector('.abilities-slot-1')
-export const abilities_slot_1_displayName = document.querySelector('.abilities-slot-1-displayName')
-export const abilities_slot_1_description = document.querySelector('.abilities-slot-1-description')
-
-export const abilities_slot_2 = document.querySelector('.abilities-slot-2')
-export const abilities_slot_2_displayName = document.querySelector('.abilities-slot-2-displayName')
-export const abilities_slot_2_description = document.querySelector('.abilities-slot-2-description')
-
-export const abilities_slot_3 = document.querySelector('.abilities-slot-3')
-export const abilities_slot_3_displayName = document.querySelector('.abilities-slot-3-displayName')
-export const abilities_slot_3_description = document.querySelector('.abilities-slot-3-description')
+export const list_skills_img = document.querySelector('.list-skills-img')
+export const skill_description = document.querySelector('.skill-description')
 
 export const fullPortrait = document.querySelector('.fullPortrait')
 export const sound = document.querySelector('.sound')
-export const sound_2 = document.querySelector('.sound-2')
 export const voice = new Audio()
