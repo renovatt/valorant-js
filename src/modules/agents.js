@@ -7,8 +7,14 @@ export const iconCharRender = async () => {
     const response = fetch.data
     const charList = response.map(item =>
         `<div class="card-char">
-            <span class="card-char-name">${item.displayName}</span>
-            <img id="${item.uuid}" src="${item.displayIcon}" alt="${item.displayName}" data-name="${item.displayName}">
+            <div class="card-char-img">
+                <img src="${item.displayIcon}" alt="${item.displayName}">
+            </div>
+
+            <div class="card-char-check">
+                <span class="card-char-name">${item.displayName}</span>
+                <span class="card-char-go" id="${item.uuid}" data-name="${item.displayName}">Ver Mais</span>
+            </div>
         </div>`)
     character.innerHTML = charList.join('')
 }

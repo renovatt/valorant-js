@@ -131,7 +131,7 @@ header nav a:hover{
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: var(--color1);
 }
 
@@ -140,29 +140,53 @@ header nav a:hover{
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    margin-top: 30px;
+    margin-top: 90px;
+    margin-bottom: 70px;
     width: 95%;
-    height: auto;
+    height: 100%;
     background-color: var(--color2);
     border: 1px solid #000;
 }
 
 .card-char {
-    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 15px;
+    width: 290px;
+    height: 160px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    background: linear-gradient(90deg, rgb(145, 127, 127) -100%, rgb(250, 249, 249) 100%, rgb(235, 231, 231) 100%);
+}
+
+.card-char-img{
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    margin: 5px;
-    width: 160px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgba(0,0,0,1) -100%, rgba(253,69,86,1) 100%, rgba(255,255,255,1) 100%);
+}
+
+.card-char-img img {
+    width: 90%;
+    height: 90%;
+    padding: 5px;
     border-radius: 50%;
-    background-color: #FD4556;
-    border: 1px solid #000;
+    object-fit: cover;
+    background-color: var(--color4);
+}
+
+.card-char-check{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .card-char-name{
-    position: absolute;
     width: 120px;
     height: 40px;
     display: flex;
@@ -170,26 +194,26 @@ header nav a:hover{
     align-items: center;
     text-align: center;
     font-size: 32px;
-    font-weight: 600;
-    color: var(--color1);
-    background-color: var(--color5);
+    color: var(--color5);
+    margin: 5px;
+    background-color: var(--color1);
 }
 
-.card-char img {
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    padding: 5px;
-    border-radius: 50%;
-    object-fit: cover;
-    transition: all .3s;
-    background-color: var(--color4);
+.card-char-go{
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 32px;
+    color: var(--color4);
+    background-color: var(--color2);
 }
 
-.card-char img:hover {
-    transform: scale(101%);
-    background-color: var(--color5);
-    opacity: 0.1;
+.card-char-go:hover{
+    background-color: #FD4556;
 }
 
 .weapons{
@@ -226,7 +250,7 @@ header nav a:hover{
     width: 500px;
     height: 330px;
     border: 1px solid #000;
-    background-color: var(--color4);
+    background: linear-gradient(90deg, rgb(199, 192, 192) -100%, rgb(255, 255, 255) 100%, rgb(235, 231, 231) 100%);
 }
 
 .card-guns .name{
@@ -778,15 +802,6 @@ p::selection {
         height: 100vh;
     }
 
-    .card-char{
-        width: 120px;
-        height: 120px;
-    }
-
-    .card-char-name{
-        width: 100px;
-    }
-
     .char-modal{
         right: -120px;
     }
@@ -943,16 +958,6 @@ p::selection {
         margin-bottom: 350px;
     }
 
-    .card-char{
-        width: 100px;
-        height: 100px;
-    }
-
-    .card-char-name{
-        width: 80px;
-        font-size: 1.4rem;
-    }
-
     .skills-video{
         width: 90%;
     }
@@ -966,20 +971,6 @@ p::selection {
     .home-content video{
         margin-top: -20px;
         width: 300%;
-    }
-
-    .character{
-        margin-top: 40px;
-    }
-
-    .card-char{
-        width: 100px;
-        height: 100px;
-    }
-
-    .card-char-name{
-        width: 60px;
-        font-size: 1.2rem;
     }
 
     .card-guns{
@@ -1019,17 +1010,6 @@ p::selection {
 
     .card-maps img{
         width: 400%;
-    }
-}
-
-@media screen and (max-width: 468px){
-    .card-char{
-        width: 22%;
-        height: 22%;
-    }
-
-    .card-char-name{
-        width: 15%;
     }
 }
 
