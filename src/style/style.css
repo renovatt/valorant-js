@@ -603,10 +603,22 @@ header nav a:hover{
 }
 
 .skills-content{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+}
+
+.skills-content span{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 1px;
+    top: 20;
+    background-color: #000;
 }
 
 .list-skills-img{
@@ -623,7 +635,15 @@ header nav a:hover{
     align-items: center;
     width: 70px;
     height: 70px;
+    border: 1px solid #81807e;
+    transition: ease-in-out .3s;
+    background-color: #8b8989;
+    transform: scaleY(100%);
+}
+
+.list-skills-img div:hover{
     border: 1px solid #000;
+    background: #c4c3be;
 }
 
 .list-skills-img img{
@@ -631,17 +651,14 @@ header nav a:hover{
     margin:  0 50px;
     width: 60px;
     height: 60px;
+    transform: scale(90%);
+    transition: ease-in-out .3s;
     filter: drop-shadow(0 0 0.2rem #fdf);
-    transition: ease-in-out .1s;
 }
 
 .list-skills-img img:hover{
     filter: none;
-    background-color: #FD4556;
-}
-
-.skills-img{
-    filter: none;
+    transform: scale(100%);
     background-color: #FD4556;
 }
 
