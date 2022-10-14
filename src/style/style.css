@@ -466,13 +466,14 @@ header nav a:hover{
     height: 50px;
     font-size: 2rem;
     text-transform: uppercase;
-    background-color: #000000;
-    color: var(--color1);
+    background-color: #000;
+    color: #c4c3be;
     transition: all .3s;
 }
 
 .card-map-name:hover{
     opacity: 1;
+    color: var(--color1);
 }
 
 /* Agent Modal Settings */

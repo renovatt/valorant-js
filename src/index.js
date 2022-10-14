@@ -45,51 +45,45 @@ const openModal = async () => {
     if(valorant_api_2){
 
         const list_data_skills = [{
-            skill_0: `${valorant_api_2.abilities[0].ability_icon.url}`,
-            skill_1: `${valorant_api_2.abilities[1].ability_icon.url}`,
-            skill_2: `${valorant_api_2.abilities[2].ability_icon.url}`,
-            skill_3: `${valorant_api_2.abilities[3].ability_icon.url}`,
-
-            name_skill_0: `${valorant_api_2.abilities[0].ability_name}`,
-            name_skill_1: `${valorant_api_2.abilities[1].ability_name}`,
-            name_skill_2: `${valorant_api_2.abilities[2].ability_name}`,
-            name_skill_3: `${valorant_api_2.abilities[3].ability_name}`,
+            name_skill_0: valorant_api_2.abilities[0].ability_name,
+            name_skill_1: valorant_api_2.abilities[1].ability_name,
+            name_skill_2: valorant_api_2.abilities[2].ability_name,
+            name_skill_3: valorant_api_2.abilities[3].ability_name,
             
-            description_skill_0: `${valorant_api_2.abilities[0].ability_description}`,
-            description_skill_1: `${valorant_api_2.abilities[1].ability_description}`,
-            description_skill_2: `${valorant_api_2.abilities[2].ability_description}`,
-            description_skill_3: `${valorant_api_2.abilities[3].ability_description}`,
+            description_skill_0: valorant_api_2.abilities[0].ability_description,
+            description_skill_1: valorant_api_2.abilities[1].ability_description,
+            description_skill_2: valorant_api_2.abilities[2].ability_description,
+            description_skill_3: valorant_api_2.abilities[3].ability_description,
 
-            video_skill_0: `${valorant_api_2.abilities[0].ability_video[0].video.file.url}`,   
-            video_skill_1: `${valorant_api_2.abilities[1].ability_video[0].video.file.url}`,       
-            video_skill_2: `${valorant_api_2.abilities[2].ability_video[0].video.file.url}`,
-            video_skill_3: `${valorant_api_2.abilities[3].ability_video[0].video.file.url}`
+            video_skill_0: valorant_api_2.abilities[0].ability_video[0].video.file.url,   
+            video_skill_1: valorant_api_2.abilities[1].ability_video[0].video.file.url,       
+            video_skill_2: valorant_api_2.abilities[2].ability_video[0].video.file.url,
+            video_skill_3: valorant_api_2.abilities[3].ability_video[0].video.file.url
         }]
 
-        const render_skills = list_data_skills.map( skill => 
-           `<div><img src= "${skill.skill_0}" data-skill="${skill.name_skill_0}"></div>
-            <div><img src= "${skill.skill_1}" data-skill="${skill.name_skill_1}"></div>
-            <div><img src= "${skill.skill_2}" data-skill="${skill.name_skill_2}"></div>
-            <div><img src= "${skill.skill_3}" data-skill="${skill.name_skill_3}"></div>
-            `)
-
+        const list_skills = valorant_api_2.abilities
+        
+        const render_skills = list_skills.map( skill => 
+           `<div>
+                <img src= "${skill.ability_icon.url}" data-skill="${skill.ability_name}">
+            </div>`).join('')
             list_skills_img.innerHTML = render_skills
 
-            const zero_skill = list_data_skills.map(item => `
-                        <div class="skills-desc">
-                            <h4>${item.name_skill_0}</h4>
-                            <p class="control">${item.description_skill_0}</p>
-                        </div>
+        const zero_skill = list_data_skills.map(item => `
+                    <div class="skills-desc">
+                        <h4>${item.name_skill_0}</h4>
+                        <p class="control">${item.description_skill_0}</p>
+                    </div>
 
-                        <div class="skills-video">
-                            <video autoplay loop muted src="${item.video_skill_0}"></video>
-                        </div>`)
-                    skill_description.innerHTML = zero_skill
+                    <div class="skills-video">
+                        <video autoplay loop muted src="${item.video_skill_0}"></video>
+                    </div>`)
+                skill_description.innerHTML = zero_skill
 
-                list_skills_img.addEventListener('click', (event) => {
-                    saved_skill_name = event.target.dataset.skill
-                    renderInfoSkills()
-                })
+            list_skills_img.addEventListener('click', (event) => {
+                saved_skill_name = event.target.dataset.skill
+                renderInfoSkills()
+            })
 
             function renderInfoSkills(){
                 const check_zero_skill = list_data_skills.find(item => item.name_skill_0 === saved_skill_name)
@@ -107,7 +101,6 @@ const openModal = async () => {
                         <div class="skills-video">
                             <video autoplay loop muted src="${item.video_skill_0}"></video>
                         </div>`)
-                    
                     skill_description.innerHTML = zero_skill
                 } 
                 
@@ -119,7 +112,6 @@ const openModal = async () => {
                     </div>
                     
                     <div class="skills-video">
-
                         <video autoplay loop muted src="${item.video_skill_1}"></video>
                     </div>`)
                     skill_description.innerHTML = first_skill
@@ -166,12 +158,9 @@ function controlModalScreen(){
     content_modal.style.display = "flex"
 }
 
-//Eventos de controle e modal
 character.addEventListener('click', (event) => {
     char_uuid = event.target.id
     checking_both_names = event.target.dataset.name
-    // console.log(char_uuid)
-    // console.log(checking_both_names)
     openModal()
 })
 
@@ -191,7 +180,6 @@ sound.addEventListener('click', () => {
     voice.play()
 })
 
-//Eventos de controle das telas
 a_home.addEventListener('click', () => {
     home.style.display = "flex"
     agents.style.display = "none"
@@ -232,7 +220,6 @@ a_maps.addEventListener('click', () => {
     maps.style.display = "flex"
 })
 
-//Menu mobile
 open_menu.addEventListener('click', () => {
     document.getElementById('menu-mobile').style.width = '100%'
 })
@@ -241,7 +228,6 @@ close_menu.addEventListener('click', () => {
     document.getElementById('menu-mobile').style.width = '0'
 })
 
-//Eventos de controle das telas mobile
 m_home.addEventListener('click', () => {
     document.getElementById('menu-mobile').style.width = '0'
     home.style.display = "flex"
