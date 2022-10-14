@@ -6,8 +6,8 @@ export const mapsRender = async () => {
     const response = fetch.data
     const mapList = response.map(item =>
         `<div class="card-maps">
-                <img id="${item.uuid}" src="${item.splash}" alt="${item.displayName}">
-                <span class="card-map-name">${item.displayName}</span>
+            <span class="card-map-name">${item.displayName}</span>
+            <img src="${item.splash}">
         </div>`)
     map.innerHTML = mapList.join('')
 }

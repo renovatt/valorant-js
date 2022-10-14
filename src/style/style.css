@@ -420,37 +420,54 @@ header nav a:hover{
     display: none;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: auto;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: #000; */
+}
+
+.map{
+    display: flex;
+    overflow-x: auto;
+    position: relative;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    background-color: #000;
 }
 
 .card-maps{
+    flex: none;
     display: flex;
-    align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
-    background-color: #FD4556;
+    align-items: center;
+    position: relative;
+    width: 100vw;
+    height: 85vh;
+    margin-top: 35px;
+    scroll-snap-align: start;
+    text-align: center;
+    /* pointer-events: none; */
 }
 
 .card-maps img{
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .card-map-name{
     cursor: pointer;
+    opacity: 0.3;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 50px;
-    font-size: 32px;
+    font-size: 2rem;
+    text-transform: uppercase;
     background-color: #000000;
     color: var(--color1);
-    opacity: 0.3;
     transition: all .3s;
 }
 
@@ -556,6 +573,7 @@ header nav a:hover{
 .main-modal .title{
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .sound {
@@ -901,14 +919,6 @@ p::selection {
         min-width: 480px;
     }
 
-    .card-maps{
-        height: 100vh;
-    }    
-
-    .card-maps img{
-        width: 200%;
-    }
-
     .skill-description{
         flex-direction: column;
         height: auto;
@@ -1008,8 +1018,8 @@ p::selection {
         display: none;
     }  
 
-    .card-maps img{
-        width: 400%;
+    .card-maps{
+        height: 88vh;
     }
 }
 
@@ -1041,9 +1051,5 @@ p::selection {
 
     .gear-thumb{
         display: none;
-    }
-
-    .card-maps img{
-        width: 500%;
     }
 }
