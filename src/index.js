@@ -147,6 +147,7 @@ const openModal = async () => {
 }
 
 function controlModalScreen(){
+    window.scrollTo(0,0)
     header.style.display = "none"
     home.style.display = "none"
     agents.style.display = "none"
