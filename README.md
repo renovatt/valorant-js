@@ -2,7 +2,7 @@
 
 ## Sobre o projeto
 
-(link do projeto)
+https://valorant-self.vercel.app/
 
 Será que alguém aqui seria fã do jogo? Assumo que infelizmente não joguei muitas vezes por conta de não ter um PC bom, mas resolvi tentar criar mais um mini site, consumindo uma API estou renderizando algumas informações sobre o game, personagens com suas descrições, vozes e habilidades, apresentações de todas as armas, suas especificações e os mapas presentes no jogo.
 
@@ -13,6 +13,7 @@ Será que alguém aqui seria fã do jogo? Assumo que infelizmente não joguei mu
 ![Web 1](https://github.com/renovatt/valorant/blob/main/src/assets/readme/web-1.png)
 ![Web 1](https://github.com/renovatt/valorant/blob/main/src/assets/readme/web-2.png)
 ![Web 1](https://github.com/renovatt/valorant/blob/main/src/assets/readme/web-3.png)
+![Web 1](https://github.com/renovatt/valorant/blob/main/src/assets/readme/web-4.png)
 
 ## Front-end
 - HTML
@@ -26,7 +27,7 @@ Será que alguém aqui seria fã do jogo? Assumo que infelizmente não joguei mu
 ## Como usar
 - Apenas navegue entre as janelas do site e clique nos personagens para visualizar suas informações.
 
-![Web 3](https://github.com/renovatt/valorant/blob/main/src/assets/readme/valorant-preview)
+![Web 3](https://github.com/renovatt/valorant/blob/main/src/assets/readme/valorant-preview.gif)
 
 ## Como contribuir?
 - Você pode me dar suporte me seguindo aqui no GitHub ou criar uma conexão comigo no linkedin, crescendo minha Networking e curtir o meu projeto.
