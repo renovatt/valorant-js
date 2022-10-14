@@ -397,7 +397,7 @@ header nav a:hover{
     color: #fff;
 }
 
-.gear-desc div::selection{
+/* .gear-desc div::selection{
     color: #000;
     background-color: #FD4556;
 }
@@ -405,7 +405,7 @@ header nav a:hover{
 .gear-desc span::selection{
     color: #000;
     background-color: #FD4556;
-}
+} */
 
 .gear-content img{
     width: 240px;
@@ -422,7 +422,7 @@ header nav a:hover{
     align-items: center;
     width: 100vw;
     height: 100vh;
-    /* background-color: #000; */
+    background-color: #000;
 }
 
 .map{
@@ -457,14 +457,14 @@ header nav a:hover{
 
 .card-map-name{
     cursor: pointer;
-    opacity: 0.3;
+    opacity: 0.2;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 50px;
-    font-size: 2rem;
+    height: 90px;
+    font-size: 5rem;
     text-transform: uppercase;
     background-color: #000;
     color: #c4c3be;
@@ -484,7 +484,7 @@ header nav a:hover{
     align-items: center;
     flex-direction: column;
     width: 100%;
-    background-color: #0f1923;
+    background-color: #0d1820;
 }
 
 .agent-modal{
@@ -810,6 +810,35 @@ header nav a:hover{
 p::selection {
     color: var(--color5);
     background-color: var(--color4);
+}
+
+span::selection {
+    color: var(--color5);
+    background-color: var(--color4);
+}
+
+div::selection {
+    color: var(--color5);
+    background-color: var(--color4);
+}
+
+h3::selection {
+    color: var(--color5);
+    background-color: var(--color4);
+}
+
+h4::selection {
+    color: var(--color5);
+    background-color: var(--color4);
+}
+
+a::selection {
+    color: var(--color5);
+    background-color: var(--color4);
+}
+
+img::selection {
+    background-color: transparent;
 }
 
 /*Media query*/
