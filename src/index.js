@@ -10,7 +10,7 @@ import { m_home, m_agents, m_weapons, m_gears, m_maps } from './modules/consts.j
 import { header, home, agents, weapons, gears, maps, footer } from './modules/consts.js'
 
 import { fullPortrait, sound, voice } from './modules/consts.js'
-import { character, content_modal, back } from './modules/consts.js'
+import { logo, character, content_modal, home_btn, back } from './modules/consts.js'
 import { role_name, role_icon, char_name, char_desc, list_skills_img, skill_description } from './modules/consts.js'
 
 let char_uuid
@@ -179,6 +179,23 @@ back.addEventListener('click', () => {
 
 sound.addEventListener('click', () => {
     voice.play()
+})
+
+logo.addEventListener('click', () => {
+    home.style.display = "flex"
+    agents.style.display = "none"
+    weapons.style.display = "none"
+    gears.style.display = "none"
+    maps.style.display = "none"
+})
+
+
+home_btn.addEventListener('click', () => {
+    home.style.display = "none"
+    agents.style.display = "flex"
+    weapons.style.display = "none"
+    gears.style.display = "none"
+    maps.style.display = "none"
 })
 
 a_home.addEventListener('click', () => {

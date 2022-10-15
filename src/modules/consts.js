@@ -1,3 +1,6 @@
+export const logo = document.querySelector('.logo')
+export const home_btn = document.querySelector('.home-btn')
+
 export const a_home = document.querySelector('.a-home')
 export const a_agents = document.querySelector('.a-agents')
 export const a_weapons = document.querySelector('.a-weapons')

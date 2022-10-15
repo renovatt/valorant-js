@@ -1,4 +1,10 @@
 @font-face{
+    font-family: 'Valorant';
+    src: url('../assets/font/Valorant\ Font.ttf') format('opentype');
+    font-weight: normal;
+}
+
+@font-face{
     font-family: 'Tungsten';
     src: url('../assets/font/Tungsten-Bold.ttf') format('opentype');
     font-weight: normal;
@@ -110,6 +116,49 @@ header nav a:hover{
     display: flex;
     width: 100%;
     height: 100vh;
+    background-color: #121a22;
+}
+
+.intro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;    
+    width: 100%;
+    padding: 20px;
+}
+
+.intro h1{
+    cursor: default;
+    font-family: "Valorant";
+    font-size: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    color: #000;
+    opacity: 0.4;
+}
+
+.home-btn{
+    z-index: 1;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 3rem;
+    text-decoration: none;
+    text-transform:uppercase;
+    color: var(--color4);
+    border: 1px solid #121a22;
+    background-color: #FD4556;
+    transition: ease .3s;
+}
+
+.home-btn:hover{
+    color: #121a22;
+    padding: 10px 30px;
 }
 
 .home-content{
@@ -121,9 +170,11 @@ header nav a:hover{
 }
 
 .home-content video{
-    margin-top: -85px;
+    margin-top: -45px;
+    margin-left: -170px;
     width: 100%;
     height: 200%;
+    position: fixed;
 }
 
 .agents {
@@ -822,6 +873,10 @@ div::selection {
     background-color: var(--color4);
 }
 
+h1::selection {
+    background-color: transparent;
+}
+
 h3::selection {
     color: var(--color5);
     background-color: var(--color4);
@@ -841,6 +896,10 @@ img::selection {
     background-color: transparent;
 }
 
+button::selection {
+    background-color: var(--color4);
+}
+
 /*Media query*/
 @media screen and (max-width: 1115px){
     .content-modal{
@@ -848,7 +907,8 @@ img::selection {
     }
 
     .home-content video{
-        margin-top: 10px;
+        margin-top: -30px;
+        margin-left: -250px;
         width: 200%;
         height: 100vh;
     }
@@ -928,10 +988,25 @@ img::selection {
         color: #fff;
         background-color: #FD4556;
     }
+
+    .intro{
+        position: absolute;
+        top: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .intro h1{
+        font-size: 8rem;
+    }
+
+    .intro .home-btn{
+        font-size: 2rem;
+    }
     
     .home-content video{
-        margin-top: -50px;
-        width: 200%;
+        margin-left: 0;
+        width: 300%;
     }
 
     .agent-modal {
@@ -973,7 +1048,15 @@ img::selection {
     }
 }
 
-@media screen and (max-width: 720px) {    
+@media screen and (max-width: 720px) {
+    .intro h1{
+        font-size: 6rem;
+    }
+
+    .intro .home-btn{
+        font-size: 1.5rem;
+    }
+
     .agent-background{
         width: 100vh;
     }
@@ -1011,9 +1094,13 @@ img::selection {
         min-width: 380px;
     }
 
+    .intro h1{
+        opacity: .6;
+        font-size: 4rem;
+    }
+
     .home-content video{
-        margin-top: -20px;
-        width: 300%;
+        width: 400%;
     }
 
     .card-guns{
