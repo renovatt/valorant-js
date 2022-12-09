@@ -40,7 +40,7 @@ export const fetchMaps = async () => {
 fetchMaps()
 
 export const fetchSkills = async () => {
-    const fetchA = await fetch(`https://api-proxy.hayato.dev.br/link?url=https://playvalorant.com/page-data/pt-br/agents/neon/page-data.json`)
+    const fetchA = await fetch(`https://proxy-api.hayato.dev.br/type/json?url=https://playvalorant.com/page-data/pt-br/agents/neon/page-data.json`)
     if (fetchA.status === 200) {
         const response = await fetchA.json()
         return response
